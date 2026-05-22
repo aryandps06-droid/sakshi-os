@@ -20,11 +20,6 @@ export default function IntroSequence({
   const [denied, setDenied] = useState(false);
 
   useEffect(() => {
-    if (introMusicRef?.current) {
-      introMusicRef.current.volume = 1;
-      introMusicRef.current.play().catch(() => {});
-    }
-
     const timers = [
       setTimeout(() => setPhase("warning"), 3000),
       setTimeout(() => setPhase("terminal"), 5500),
@@ -42,10 +37,7 @@ export default function IntroSequence({
 
     const timer = setInterval(() => {
       if (i < terminalLines.length) {
-        setTypedLines((prev) => [
-          ...prev,
-          terminalLines[i]
-        ]);
+        setTypedLines((prev) => [...prev, terminalLines[i]]);
         i++;
       } else {
         clearInterval(timer);
@@ -57,6 +49,11 @@ export default function IntroSequence({
 
   const unlock = () => {
     if (password === "sakshi1111") {
+      if (introMusicRef?.current) {
+        introMusicRef.current.volume = 1;
+        introMusicRef.current.play().catch(() => {});
+      }
+
       setPhase("granted");
 
       setTimeout(() => {
@@ -92,7 +89,6 @@ export default function IntroSequence({
       ))}
 
       <AnimatePresence mode="wait">
-
         {phase === "signal" && (
           <motion.div
             key="signal"
@@ -113,9 +109,7 @@ export default function IntroSequence({
             animate={{ opacity: 1 }}
           >
             <h1>WARNING</h1>
-            <p>
-              Subject linked to unstable emotional dependency.
-            </p>
+            <p>Subject linked to unstable emotional dependency.</p>
           </motion.div>
         )}
 
@@ -203,11 +197,9 @@ export default function IntroSequence({
                 duration: 5
               }}
             />
-
             <h1>SAKSHI OS</h1>
           </motion.div>
         )}
-
       </AnimatePresence>
     </div>
   );
