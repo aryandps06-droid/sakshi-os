@@ -19,17 +19,13 @@ const metrics = [
   "Logic Stability...........FAILED"
 ];
 
-export default function BootScreen({
-  onComplete,
-  onStartMusic
-}) {
+export default function BootScreen({ onComplete }) {
   const [phase, setPhase] = useState("access");
   const [visibleLines, setVisibleLines] = useState([]);
   const [visibleMetrics, setVisibleMetrics] = useState([]);
   const [scanProgress, setScanProgress] = useState(0);
 
   const startBoot = () => {
-    onStartMusic();
     setPhase("signal");
 
     setTimeout(() => {
@@ -52,10 +48,7 @@ export default function BootScreen({
 
     const timer = setInterval(() => {
       if (i < terminalLines.length) {
-        setVisibleLines((prev) => [
-          ...prev,
-          terminalLines[i]
-        ]);
+        setVisibleLines((prev) => [...prev, terminalLines[i]]);
         i++;
       } else {
         clearInterval(timer);
@@ -79,10 +72,7 @@ export default function BootScreen({
       progress += 10;
 
       if (metricIndex < metrics.length) {
-        setVisibleMetrics((prev) => [
-          ...prev,
-          metrics[metricIndex]
-        ]);
+        setVisibleMetrics((prev) => [...prev, metrics[metricIndex]]);
         metricIndex++;
       }
 
@@ -108,7 +98,6 @@ export default function BootScreen({
   return (
     <div className="boot-screen">
       <AnimatePresence mode="wait">
-
         {phase === "access" && (
           <motion.div
             key="access"
@@ -128,11 +117,25 @@ export default function BootScreen({
             </p>
 
             <div className="access-buttons">
-              <button onClick={startBoot}>
+              <button
+                style={{
+                  position: "relative",
+                  zIndex: 9999,
+                  pointerEvents: "auto"
+                }}
+                onClick={startBoot}
+              >
                 YES — Enter
               </button>
 
-              <button onClick={fakeNo}>
+              <button
+                style={{
+                  position: "relative",
+                  zIndex: 9999,
+                  pointerEvents: "auto"
+                }}
+                onClick={fakeNo}
+              >
                 NO — Retreat 😌
               </button>
             </div>
@@ -145,7 +148,6 @@ export default function BootScreen({
             className="boot-message"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
           >
             Too late now ❤️
           </motion.div>
@@ -157,7 +159,6 @@ export default function BootScreen({
             className="boot-message"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
           >
             UNAUTHORIZED SIGNAL DETECTED
           </motion.div>
@@ -212,7 +213,6 @@ export default function BootScreen({
             <p>WELCOME BACK ❤️</p>
           </motion.div>
         )}
-
       </AnimatePresence>
     </div>
   );

@@ -113,7 +113,7 @@ export default function FinalTransmission() {
               animate={{ opacity: 1 }}
             >
               <h1>Made with Love ❤️</h1>
-              <p>By Aryan</p>
+              <p>By .......</p>
               <span>For Sakshi.</span>
             </motion.div>
           )}
@@ -134,7 +134,7 @@ export default function FinalTransmission() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
-              If she smiled while using this...
+              If you smiled while using this...
               <br />
               mission accomplished ❤️
             </motion.div>
