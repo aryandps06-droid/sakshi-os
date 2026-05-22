@@ -2656,3 +2656,9 @@ body {
   60% { transform: translateX(-8px); }
   80% { transform: translateX(8px); }
 }
+.heartbeat-screen p {
+  margin-top: 14px;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.04em;
+}

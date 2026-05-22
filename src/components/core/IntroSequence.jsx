@@ -127,16 +127,46 @@ export default function IntroSequence({
         )}
 
         {phase === "heartbeat" && (
-          <motion.div
-            key="heartbeat"
-            className="heartbeat-screen"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            <div className="heart-pulse"></div>
-            <h1>HEART SIGNAL FOUND ❤️</h1>
-          </motion.div>
-        )}
+  <motion.div
+    key="heartbeat"
+    className="heartbeat-screen"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+  >
+    <div className="heart-pulse"></div>
+
+    <motion.h1
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+    >
+      SAKSHI SIGNAL DETECTED ❤️
+    </motion.h1>
+
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1.2 }}
+    >
+      Establishing emotional connection...
+    </motion.p>
+
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 2.5 }}
+    >
+      Memory resonance confirmed ✨
+    </motion.p>
+
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 4 }}
+    >
+      Accessing heart archives...
+    </motion.p>
+  </motion.div>
+)}
 
         {phase === "password" && (
           <motion.div
